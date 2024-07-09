@@ -1,0 +1,150 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.hand-icon {
+  cursor: pointer;
+}
+
+.home:hover {
+  background-color: black;
+  color: blue;
+}
+.highlight {
+  background-color: aqua;
+}
+
+.navbar-style {
+  background-color: #0f235a !important;
+  margin-bottom: 0px;
+}
+#tog:hover {
+  background-color: #0f172a;
+}
+#homecomponent {
+  background-image: url("https://plus.unsplash.com/premium_photo-1677852356095-51e64184cf25?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2hvcHBpbmclMjBjYXJ0fGVufDB8fDB8fHww");
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  line-height: 1.6;
+}
+#karttitle {
+  font-size: 40px;
+  font-weight: bold;
+}
+#aboutcompo {
+  background-color: #e9865f;
+}
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+}
+h5 {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 60px;
+  text-transform: capitalize;
+}
+#search-input {
+  width: 60%; margin-top: 20px;
+  max-width: 400px;
+  padding: 15px 20px;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  font-size: 15px;
+  color: #333;
+}
+#search-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: #0404e6;
+  color: aliceblue;
+  border: none;
+  font-size: 18px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border-radius: 20px;
+  margin-left: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+#search-button:hover {
+  background-color: #31e708;
+}
+.images {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.images .image {
+  margin-bottom: 60px;
+  width: 300px;
+  height: 100%;
+  border-radius: 20px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+.images .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+.images .image img:hover {
+  opacity: 0.6;
+}
+.login {
+  margin-top: 120px;
+  margin-bottom: 60px;
+  margin-left: 500px;
+  margin-right: 500px;
+  font-size: large;
+  align-items: center;
+  margin-bottom: 60px;
+  font-weight: bold;
+  
+  
+}
+.login:hover{
+  cursor: pointer;
+}
