@@ -21,6 +21,7 @@ class Product(db.Model):
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text)
     price = db.Column(db.Float, nullable=False)
+    image_url = db.Column(db.String(255), nullable=True) 
 
 class CartItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)

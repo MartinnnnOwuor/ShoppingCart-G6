@@ -3,6 +3,8 @@ import React, { useState } from "react";
 const CustomersList = () => {
   // Using state hook to make content/value to be rendered dynamic/up-to-date
   const [customersCount, setCustomersCount] = useState(10);
+
+  
   const [customers, setCustomers] = useState([
     {
       id: 1,

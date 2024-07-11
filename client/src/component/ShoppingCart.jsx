@@ -7,7 +7,7 @@ const ShoppingCart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://react-server-k2ig.onrender.com/products");
+        const response = await fetch("http://localhost:5000/products");
         const responseData = await response.json();
         setProducts(responseData);
       } catch (error) {
