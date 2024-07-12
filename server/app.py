@@ -1,11 +1,10 @@
-
 import logging
+import os
 from flask import Flask, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_migrate import Migrate
 from flask_cors import CORS
 from models import db, User, Product, CartItem, Review, Dashboard
-import os
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -20,6 +19,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 CORS(app)
 
+# Route for user registration
 @app.route('/register', methods=['POST'])
 def register():
     data = request.json
@@ -31,6 +31,7 @@ def register():
     logger.info(f"User registered: {data['username']}")
     return jsonify({"message": "User registered successfully"}), 201
 
+# Route for user login
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
@@ -54,41 +55,27 @@ def login():
     logger.warning(f"Failed login attempt for email: {email}")
     return jsonify({"message": "Invalid credentials"}), 401
 
-@app.route('/api/dashboard')
-def get_dashboard_items():
-    items = Dashboard.query.all()
-    return jsonify([
-        {
-            "id": item.id,
-            "name": item.name,
-            "image_url": item.image_url
-        }
-        for item in items
-    ])
-
+# Route to fetch all products
 @app.route('/products', methods=['GET'])
 def get_products():
     logger.debug("Fetching all products")
     products = Product.query.all()
     return jsonify([{"id": p.id, "name": p.name, "description": p.description, "price": p.price} for p in products])
 
+# Route to fetch a specific product by id
 @app.route('/products/<int:product_id>', methods=['GET'])
 def get_product(product_id):
     logger.debug(f"Fetching product with id: {product_id}")
     product = Product.query.get_or_404(product_id)
     return jsonify({"id": product.id, "name": product.name, "description": product.description, "price": product.price})
 
+# Route to fetch dashboard items
 @app.route('/dashboard', methods=['GET'])
 def get_dashboard_items():
     items = Dashboard.query.all()
     return jsonify([{'id': item.id, 'image_url': item.image_url, 'name': item.name} for item in items])
 
-@app.route('/dashboard_images', methods=['GET'])
-def get_dashboard_images():
-    images = Dashboard.query.all()
-    return jsonify([{'id': image.id, 'image_url': image.image_url, 'name': image.name} for image in images])
-
-
+# Route to initialize dashboard with predefined images
 @app.route('/init_dashboard', methods=['POST'])
 def init_dashboard():
     images = [
@@ -117,54 +104,7 @@ def init_dashboard():
 
     return jsonify({'message': 'Dashboard initialized with images'}), 201
 
-
-
-@app.route('/dashboard', methods=['POST'])
-@jwt_required()
-def add_dashboard_item():
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    if not user.is_admin:
-        return jsonify({"message": "Access forbidden: Admins only"}), 403
-
-    data = request.json
-    if not data or 'image_url' not in data or 'name' not in data:
-        return jsonify({"message": "Invalid input. 'image_url' and 'name' are required."}), 400
-
-    new_item = Dashboard(image_url=data['image_url'], name=data['name'])
-    db.session.add(new_item)
-    db.session.commit()
-
-    return jsonify({'message': 'Dashboard item added successfully', 'id': new_item.id}), 201
-
-@app.route('/dashboard/<int:item_id>', methods=['PUT'])
-@jwt_required()
-def update_dashboard_item(item_id):
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    if not user.is_admin:
-        return jsonify({"message": "Access forbidden: Admins only"}), 403
-
-    item = Dashboard.query.get_or_404(item_id)
-    data = request.json
-    item.image_url = data.get('image_url', item.image_url)
-    item.name = data.get('name', item.name)
-    db.session.commit()
-    return jsonify({"message": "Dashboard item updated successfully"})
-
-@app.route('/dashboard/<int:item_id>', methods=['DELETE'])
-@jwt_required()
-def delete_dashboard_item(item_id):
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    if not user.is_admin:
-        return jsonify({"message": "Access forbidden: Admins only"}), 403
-
-    item = Dashboard.query.get_or_404(item_id)
-    db.session.delete(item)
-    db.session.commit()
-    return jsonify({"message": "Dashboard item deleted successfully"})
-
+# Route to add a new product
 @app.route('/products', methods=['POST'])
 @jwt_required()
 def add_product():
@@ -195,6 +135,7 @@ def add_product():
         logger.error(f"Error adding product: {str(e)}")
         return jsonify({"message": "Error adding product", "error": str(e)}), 500
 
+# Route to update an existing product
 @app.route('/products/<int:product_id>', methods=['PUT'])
 @jwt_required()
 def update_product(product_id):
@@ -208,6 +149,7 @@ def update_product(product_id):
     logger.info(f"Product updated: {product_id}")
     return jsonify({"message": "Product updated successfully"})
 
+# Route to delete a product
 @app.route('/products/<int:product_id>', methods=['DELETE'])
 @jwt_required()
 def delete_product(product_id):
@@ -218,6 +160,7 @@ def delete_product(product_id):
     logger.info(f"Product deleted: {product_id}")
     return jsonify({"message": "Product deleted successfully"})
 
+# Route to fetch all items in the cart
 @app.route('/cart', methods=['GET'])
 @jwt_required()
 def get_cart():
@@ -226,6 +169,7 @@ def get_cart():
     cart_items = CartItem.query.filter_by(user_id=user_id).all()
     return jsonify([{"id": item.id, "product_id": item.product_id, "quantity": item.quantity} for item in cart_items])
 
+# Route to add an item to the cart
 @app.route('/cart', methods=['POST'])
 @jwt_required()
 def add_to_cart():
@@ -238,6 +182,7 @@ def add_to_cart():
     logger.info(f"Item added to cart: {cart_item.id}")
     return jsonify({"message": "Item added to cart successfully", "id": cart_item.id}), 201
 
+# Route to remove an item from the cart
 @app.route('/cart/<int:item_id>', methods=['DELETE'])
 @jwt_required()
 def remove_from_cart(item_id):
@@ -249,75 +194,5 @@ def remove_from_cart(item_id):
     logger.info(f"Item removed from cart: {item_id}")
     return jsonify({"message": "Item removed from cart successfully"})
 
-@app.route('/reviews', methods=['POST'])
-@jwt_required()
-def add_review():
-    user_id = get_jwt_identity()
-    data = request.json
-    logger.debug(f"Adding review for user {user_id}: {data}")
-    new_review = Review(user_id=user_id, product_id=data['product_id'], rating=data['rating'], comment=data['comment'])
-    db.session.add(new_review)
-    db.session.commit()
-    logger.info(f"Review added: {new_review.id}")
-    return jsonify({"message": "Review added successfully", "id": new_review.id}), 201
-
-@app.route('/reviews/<int:review_id>', methods=['PUT'])
-@jwt_required()
-def update_review(review_id):
-    user_id = get_jwt_identity()
-    logger.debug(f"Updating review {review_id} for user {user_id}")
-    review = Review.query.filter_by(id=review_id, user_id=user_id).first_or_404()
-    data = request.json
-    review.rating = data.get('rating', review.rating)
-    review.comment = data.get('comment', review.comment)
-    db.session.commit()
-    logger.info(f"Review updated: {review_id}")
-    return jsonify({"message": "Review updated successfully"})
-
-@app.route('/reviews/<int:review_id>', methods=['DELETE'])
-@jwt_required()
-def delete_review(review_id):
-    user_id = get_jwt_identity()
-    logger.debug(f"Deleting review {review_id} for user {user_id}")
-    review = Review.query.filter_by(id=review_id, user_id=user_id).first_or_404()
-    db.session.delete(review)
-    db.session.commit()
-    logger.info(f"Review deleted: {review_id}")
-    return jsonify({"message": "Review deleted successfully"})
-
-@app.route('/dashboard', methods=['GET'])
-@jwt_required()
-def get_dashboard_data():
-    # Ensure only admin users can access this route
-    user_id = get_jwt_identity()
-    user = User.query.get(user_id)
-    if not user.is_admin:
-        return jsonify({"message": "Access forbidden: Admins only"}), 403
-
-    # Fetch dashboard data
-    total_users = User.query.count()
-    total_products = Product.query.count()
-    total_reviews = Review.query.count()
-    total_cart_items = CartItem.query.count()
-
-    # Add more data as needed
-
-    return jsonify({
-        "total_users": total_users,
-        "total_products": total_products,
-        "total_reviews": total_reviews,
-        "total_cart_items": total_cart_items,
-    }), 200
-
-@app.route('/protected', methods=['GET'])
-@jwt_required()
-def protected():
-    current_user_id = get_jwt_identity()
-    logger.debug(f"Accessing protected route for user: {current_user_id}")
-    user = User.query.get(current_user_id)
-    return jsonify(id=user.id, username=user.username, email=user.email), 200
-
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
