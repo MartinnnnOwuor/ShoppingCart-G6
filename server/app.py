@@ -78,10 +78,10 @@ def get_product(product_id):
     product = Product.query.get_or_404(product_id)
     return jsonify({"id": product.id, "name": product.name, "description": product.description, "price": product.price})
 
-@app.route('/dashboard', methods=['GET'])
-def get_dashboard_items():
-    items = Dashboard.query.all()
-    return jsonify([{'id': item.id, 'image_url': item.image_url, 'name': item.name} for item in items])
+# @app.route('/dashboard', methods=['GET'])
+# def get_dashboard_items():
+#     items = Dashboard.query.all()
+#     return jsonify([{'id': item.id, 'image_url': item.image_url, 'name': item.name} for item in items])
 
 @app.route('/dashboard_images', methods=['GET'])
 def get_dashboard_images():
