@@ -1,0 +1,87 @@
+[
+    {
+      "id": 1,
+      "nameOfProduct": "PS-5",
+      "price": 175000,
+      "imageUrl": "https://images.unsplash.com/photo-1576074209600-499947598aed?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cHMlMjA1fGVufDB8fDB8fHww",
+      "quantity": 0
+    },
+    {
+      "id": 2,
+      "nameOfProduct": "Fridge",
+      "price": 80000,
+      "imageUrl": "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZyaWRnZXxlbnwwfHwwfHx8MA%3D%3D",
+      "quantity": 0
+    },
+    {
+      "id": 3,
+      "nameOfProduct": "iPhone",
+      "price": 100000,
+      "imageUrl": "https://images.unsplash.com/photo-1680266985445-84ee90d29ba8?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aXBvbmV8ZW58MHx8MHx8fDA%3D",
+      "quantity": 0
+    },
+    {
+      "id": 4,
+      "nameOfProduct": "Dell Monitor",
+      "price": 10000,
+      "imageUrl": "https://images.unsplash.com/photo-1657972407371-2e8760673c20?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZGVsbCUyMG1vbml0b3J8ZW58MHx8MHx8fDA%3D",
+      "quantity": 0
+    },
+    {
+      "id": 6,
+      "nameOfProduct": "Digital Camera",
+      "price": 15000,
+      "imageUrl": "https://media.istockphoto.com/id/185278433/photo/black-digital-slr-camera-in-a-white-background.webp?b=1&s=170667a&w=0&k=20&c=x6jHr3ZwW-nE_E1rnOxAyP7xAMjkdZoFXMbc_CdG0ZI=",
+      "quantity": 0
+    },
+    {
+      "id": 7,
+      "nameOfProduct": "Samsung Galaxy S22",
+      "price": 60000,
+      "imageUrl": "https://images.unsplash.com/photo-1659079998661-bc2fe8c5a307?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHNhbXN1bmclMjBzMjJ8ZW58MHx8MHx8fDA%3D",
+      "quantity": 0
+    },
+    {
+      "id": 8,
+      "nameOfProduct": "Huwawei Wireless Wifi",
+      "price": 12000,
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1677486394561-6e660bc9879e?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8SHV3YXdlaSUyMFdpcmVsZXNzJTIwV2lmaXxlbnwwfHwwfHx8MA%3D%3D",
+      "quantity": 0
+    },
+    {
+      "id": 9,
+      "nameOfProduct": "Blender",
+      "price": 7500,
+      "imageUrl": "https://images.unsplash.com/photo-1585237672814-8f85a8118bf6?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmxlbmRlcnxlbnwwfHwwfHx8MA%3D%3D",
+      "quantity": 0
+    },
+    {
+      "id": 10,
+      "nameOfProduct": "Microwave",
+      "price": 15000,
+      "imageUrl": "https://media.istockphoto.com/id/1406993092/photo/a-cropped-photo-of-an-anonymous-caucasian-female-heating-food-in-the-oven.webp?b=1&s=170667a&w=0&k=20&c=vVs85ryP-MnrezYWwd09rThNfn5V7pUmLRryZqFRsQ0=",
+      "quantity": 0
+    },
+    {
+      "id": 11,
+      "nameOfProduct": "MacBook Pro M2",
+      "price": 170000,
+      "imageUrl": "https://images.unsplash.com/photo-1675868375184-8d711f447b28?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bWFjYm9vayUyMHBybyUyMG0yfGVufDB8fDB8fHww",
+      "quantity": 0
+    },
+    {
+      "id": 12,
+      "nameOfProduct": "Smart Tv",
+      "price": 50000,
+      "imageUrl": "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8TEclMjBzbWFydCUyMHR2fGVufDB8fDB8fHww",
+      "quantity": 0
+    },
+    {
+      "id": 13,
+      "nameOfProduct": " Cooker",
+      "price": 5000,
+      "imageUrl": "https://images.unsplash.com/photo-1587377224035-72144bf39e53?w=1400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNvb2tlcnxlbnwwfHwwfHx8MA%3D%3D",
+      "quantity": 0
+    }
+  ]
+  
