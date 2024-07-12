@@ -1,3 +1,5 @@
+
+
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -31,6 +33,11 @@ class CartItem(db.Model):
 
     user = db.relationship('User', backref=db.backref('cart_items', lazy=True))
     product = db.relationship('Product')
+    
+class Dashboard(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    image_url = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(100), nullable=False)   
 
 class Review(db.Model):
     id = db.Column(db.Integer, primary_key=True)
