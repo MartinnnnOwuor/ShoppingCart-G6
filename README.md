@@ -40,7 +40,7 @@ Steps
 Clone the repository:
 
 '''
-git clone https://github.com/yourusername/e-kart.git
+git clone github.com/MartinnnnOwuor/ShoppingCart-G6
 cd e-kart
 '''
 
