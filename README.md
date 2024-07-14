@@ -47,14 +47,14 @@ cd e-kart
 Set up the back-end:
 
 cd server
-python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
+pip install Flask==2.2.5 Flask-SQLAlchemy==2.5.1 SQLAlchemy==1.4.46 Flask-JWT-Extended==4.4.0 Flask-Migrate==3.1.0 Flask-CORS==3.0.10 Werkzeug==2.2.3 python-dotenv==0.19.0
+flask run
 
 Set up the front-end:
 
 cd ../client
-npm install
+npm install && npm start
 
 
 Configure environment variables:
